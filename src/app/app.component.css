@@ -1,0 +1,15 @@
+.button { 
+    font-size:42px; 
+    font-weight:bold;  
+    margin-top:60px; 
+    background-color: gainsboro; 
+}
+ 
+.button1 { 
+    margin-left:100px; 
+    border:10px solid darkgray; 
+    width:70%; 
+    height:70%; 
+    text-align:center; 
+    /* padding:10px;  */
+}

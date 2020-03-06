@@ -1,48 +1,82 @@
-<div class="container-fluid">
-<form [formGroup]="profileForm" class="form">
-    <mat-form-field class="form-element">
-        <input matInput placeholder="First Name + Last Name" formControlName="Name">
-    </mat-form-field>
-    <div class="form-group">
-        <label>
-          UserName:
-            <input type="text" formControlName="userName">
-        </label>
-    </div>
-    <div class="form-group">
-        <label>
-            Email:
-            <input type="text" formControlName="email">
-        </label>
-    </div>    
-    <div class="form-group">  
-        <label>
-            Password:
-            <input [type]="show ? 'text' : 'password'" formControlName="Password">
-        </label>
-        
-  <button (click)="password()">Show</button>
-    </div>
-    
-    <div class="form-group">
-        <label>
-            Confirm Password:
-            <input type="text" formControlName="confirmP">
-        </label>
-    </div>
-    <div>
-        <label>
-            Gender:
-            <input type="radio" value="male" formControlName="Gender"> Male
-            <input type="radio" value="female" formControlName="Gender"> Female
-        </label>
-    </div>
-    <div class="form-group">
-        <label for="Country">Countries</label>
-        <select class="form-control" id="Country" formControlName="Country">
-            <option *ngFor="let Country of countries" [value]="Country.name">{{Country.name}}</option>
-        </select>
-    </div>
-    <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Submit</button>
-  </form>
+<div class="container-fluid container">
+    <form [formGroup]="profileForm" class="form center">
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Name" formControlName="Name">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="UserName" formControlName="userName">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Mobile Number" formControlName="mobileN">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Password" formControlName="Password" [type]="show ? 'text' : 'password'">
+                </mat-form-field>
+                <button mat-mini-fab color="primary" (click)="password()" class="Button1">Show</button>    
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Confirm Password" formControlName="confirmP">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-radio-group  formControlName="Gender" class="form-element">Gender
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field  class="form-element">
+                    <mat-label>Country</mat-label>
+                        <mat-select formControlName="Country">
+                            <mat-option *ngFor="let Country of countries" [value]="Country.name" >
+                                {{Country.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+        </mat-grid-list>    
+        <div class="row"  *ngIf="showMsg">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>Registration Success!</strong> Please click here to login!.
+                </p>
+            </div>
+        </div>
+        <div class="row"  *ngIf="emailReg">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>Email Already Registered! Registration Failed</strong>
+                </p>
+            </div>
+        </div>
+        <div class="row"  *ngIf="usernameReg">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>Username Taken! Registration Failed</strong>
+                </p>
+            </div>
+        </div>
+        <div class="row"  *ngIf="numberReg">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>number Already Registered! Registration Failed</strong>
+                </p>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()"  >Submit</button>
+    </form>
 </div>

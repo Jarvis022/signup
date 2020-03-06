@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="container-fluid container upMargin">
+    <form [formGroup]="loginForm" class="form center">
+        <div>
+            <mat-form-field class="form-element">
+                    <input matInput placeholder="userName" formControlName="userName">
+                </mat-form-field>
+            </div>
+            <div class="Margin">
+                <mat-form-field class="form-element">
+                    <input matInput placeholder="Password" formControlName="Password" [type]="show ? 'text' : 'password'">
+                </mat-form-field>
+                <button mat-mini-fab color="primary" (click)="password()" class="Button1">Show</button>
+            </div>
+        <div class="row"  *ngIf="nouser">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>No User Found</strong>
+                </p>
+            </div>
+        </div>
+        <div class="row"  *ngIf="failed">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>Incorrect Password</strong>
+                </p>
+            </div>
+        </div>
+        
+        <div class="row"  *ngIf="failed">
+            <div class="col-xs-12">
+                <p class="alert alert-success" >    
+                </p>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!loginForm.valid" (click)="onSubmit()">Login</button>
+    </form>
+</div>

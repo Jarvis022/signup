@@ -1,0 +1,12 @@
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid darkblue;
+    padding: 10px;
+  }
+  .Margin{
+    margin-top:10px;
+  }
+  .upMargin{
+    margin-top:50px;
+  }
